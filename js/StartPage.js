@@ -21,13 +21,17 @@ class StartPage extends Panel {
             <div>
               <font color="orange" size="5" face="Comic Sans MS">Välkommen!</font><br/>
               <br>
-              <font color="orange" size="5" face="Comic Sans MS"> ${this._user}, Vad vill du göra idag?</font><br/>
+              <font color="orange" size="5" face="Comic Sans MS"> ${this._appObject._currentUser}, Vad vill du göra idag?</font><br/>
               <br>
               <br>
               <button id=income click="onIncomeClick" type="button">Tjäna</button>
               <button id=outcome click="onOutcomeClick" type="button">Spendera</button>
               <button id=history click="onHistoryClick" type="button">Historik</button>
-            </div>
+              <br>
+              <br>
+              <br>
+              <hr>
+              </div>
             `
     }
 }

@@ -4,22 +4,28 @@
 
 class UserLoggIn extends Panel {
 
+  /* constructor(appObject, taskList, user){
+    super(appObject, taskList, user); //anropa superklassens konstruktor
+    this._appObject = appObject; //lagra en referens till App-objektet
+  } */
+
   onUserClick1() {
     this._user = 'Ryu';
+    this._appObject._currentUser=this._user;
     this._appObject.setState(APP_STATE_START);
-    return this._user;
   }
 
   onUserClick2() {
     this._user = 'Taki';
+    this._appObject._currentUser=this._user;
     this._appObject.setState(APP_STATE_START);
-    return this._user
   }
 
 
   render(html, route) {
     return html`
           <div>
+            <br>
             <font color="orange" size="5" face="Comic Sans MS">Logga in med</font><br/>
             <br>
             
@@ -27,7 +33,7 @@ class UserLoggIn extends Panel {
             <button id=taki click="onUserClick2" type="button">Taki</button>
             <br>
             <br>
-            ${this._user}
+            <br>
             <br>
             <hr>
           </div>

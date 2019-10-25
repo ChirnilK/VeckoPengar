@@ -1,9 +1,8 @@
 
 class App extends Domer {
-
+  _currentUser='';
   _appState = APP_STATE_LOGGIN;
-  _user = null;
-  _taskList = null;
+  _userLogin = new UserLoggIn(this,this._user);
 
   constructor() {
     super(); 
@@ -16,7 +15,7 @@ class App extends Domer {
 
     switch (state) {
       case APP_STATE_LOGGIN:
-        this._currentPanel = new UserLoggIn(this,this._user);
+        this._currentPanel = this._userLogin;
         break;
 
       case APP_STATE_START:
@@ -49,6 +48,7 @@ class App extends Domer {
     return html`
       <div>
         <font color="orange" size="6" face="Comic Sans MS">e-Plånbok</font><br/>
+        <br>
         <hr>
         ${this._currentPanel}
       </div>

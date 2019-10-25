@@ -15,6 +15,7 @@ class HistoryPanel extends Panel {
             <h2>Månadshistorik:</h2>
             <img src="${this._image}" id="image" height="200" width="300"> 
             <br>
+            <h4 style="color:red;">Denna sida ska uppdateras när jag lärt mig database :)</h4>
             <br>
             <button click="onBackClick" type="button">Back</button>   
           </div>

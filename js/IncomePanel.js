@@ -2,13 +2,13 @@
  * I den här panelen kan användare insätta pengar till sitt konto.
  */
 class IncomePanel extends Panel {
-    _status = "<p>Var snäll och skriva in alla informatiner. <br> Du får trycka Månad knappen en gång om månad då bestämmar datorn din månadenspeng. Lycka till!</p>";
+    _status = "<p>Var snäll och skriva in i alla fält. <br> Du får trycka Månad knappen en gång om månad då bestämmar datorn din månadenspeng. Lycka till!</p>";
     _points = 0;
 
     //När vi klickar på Add knappen...
     onAddTaskClick() {
         if (this._task == '' || this._date == '' || this._pris == '') {
-            this._status = `<p style="color:red;">saknar information i en/flera fälte.</p>`
+            this._status = `<p style="color:red;">saknar information i en/flera fält.</p>`
         }
         else {
             this._taskList.add(new Task(this._date, this._task, this._pris));  
@@ -37,7 +37,7 @@ class IncomePanel extends Panel {
 
     //När vi klickar på Månad knappen, då bestämmer datorn slumpvis månadenspeng mellan 30-100kr. 
     onMånadPengClick() {
-        this._points += Math.floor(Math.random()*70+30);
+        this._points = Math.floor(Math.random()*70+30);
         if (this._points>85){
             this._status = `<p style="color:green;">Grattis!! Din Månadenspeng är ${this._points} kr!</p>`
         }
@@ -50,24 +50,30 @@ class IncomePanel extends Panel {
         return html`<div>
    
         <form>
-            <label for="title">Date :</label>
-            <input type="text" bind="_date" placeholder="yyyy-mm-dd">
+            <ul>
+                <li class="date">
+                    <label for="date">Date :</label>
+                    <input id="date" name="date" type="text" bind="_date" style='width:250px'; placeholder="yyyy-mm-dd">
+                </li>
+                <br>
+                <li class="task">
+                    <label for="task">Uppgift :</label>
+                    <select name="task" bind="_task" style='width:250px' placeholder="Välj en uppgift">
+                    <option value="Dammsuga">Dammsuga</option>
+                    <option value="Diskmaskin">Plocka ur diskmaskinen</option>
+                    <option value="Sopor">Gå och kasta sopor</option>
+                    <option value="Tvätt">Sortera tvätten</option>
+                    <option value="IngenSpel">En 'Ingen skärm' dag</option>
+                    <option value="Panta">Panta</option>
+                    <option value="MånadPeng">Månad Pengar</option>
+                    </select>
+                </li>
             <br>
-            <br>
-            <label for="title">Uppgift :</label>
-            <select name="task" bind="_task" placeholder="Välj en uppgift">
-                <option value="dammsuga">Dammsuga</option>
-                <option value="diskmaskin">Plocka ur diskmaskinen</option>
-                <option value="sopor">Gå och kasta sopor</option>
-                <option value="tvätt">Sortera tvätten</option>
-                <option value="ingenSpel">En 'Ingen skärm' dag</option>
-                <option value="ingenSpel">Panta</option>
-                <option value="månadPeng">Månad Pengar</option>
-            </select>
-            <br>
-            <br>
-            <label for ="title"> Priset    :</label>
-            <input type ="text"  bind="_pris" placeholder="kr">
+                <li class="pris">
+                    <label for ="pris"> Priset :</label>
+                    <input id="pris" type ="text"  bind="_pris" style='width:250px' placeholder="kr">
+                </li>
+            </ul>
         </form>
         <br>
         <br>
@@ -81,6 +87,9 @@ class IncomePanel extends Panel {
         ${this._status}
         <h4>${this._taskList}</h4>
         </div>
+        <br>
+        <br>
+        <hr>
         `
     }
 }

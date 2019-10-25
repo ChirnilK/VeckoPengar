@@ -3,12 +3,12 @@
  */
 class OutcomePanel extends Panel {
 
-    _status = "<p>Var snäll och skriva in alla informatiner</p>";
+    _status = "<p>Var snäll och skriva in i alla fält</p>";
 
     //När vi klickar på Add knappen...
     onAddTaskClick() {
         if (this._task == '' || this._date == '' || this._pris == '') {
-            this._status = `<p style="color:red;">saknar information i en/flera fälte.</p>`
+            this._status = `<p style="color:red;">saknar information i en/flera fält.</p>`
             }
         else {
             this._taskList.add(new Task(this._date, this._task, this._pris));  //Lägg till ny uppgift
@@ -38,20 +38,27 @@ class OutcomePanel extends Panel {
     render(html) {
         return html`<div>
         <form>
-            <label for="title">Date :</label>
-            <input type="text" bind="_date" placeholder="yyyy-mm-dd">
+        <ul>
+            <li class="date">
+                <label for="date">Date :</label>
+                <input id="date" name="date" type="text" style='width:250px' bind="_date" placeholder="yyyy-mm-dd">
+            </li>
             <br>
+            <li class="task">
+                <label for="title">Reson :</label>
+                <br>
+                <select name="task" bind="_task" style='width:250px' placeholder="Välj en uppgift">
+                <option value="Spel">Spel</option>
+                <option value="Godis">Speciellt godis</option>
+                <option value="Present">Present</option>
+                </select>
+                </li>
             <br>
-            <label for="title">Vad vill du spendera perngarna för :</label>
-            <select name="task" bind="_task" placeholder="Välj en uppgift">
-                <option value="spel">Spel</option>
-                <option value="godis">Speciellt godis</option>
-                <option value="present">Present</option>
-            </select>
-            <br>
-            <br>
-            <label for ="title"> Priset    :</label>
-            <input type ="text"  bind="_pris" placeholder="skriv minus tecken">
+                <li class="pris">
+                    <label for ="pris"> Priset :</label>
+                    <input id="pris" type ="text"  bind="_pris" style='width:250px' placeholder="Skriv minus tecken ">
+                </li>
+            </ul>
         </form>
         <br>
         <br>

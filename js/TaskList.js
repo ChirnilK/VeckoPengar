@@ -10,11 +10,17 @@ class TaskList extends Domer{
         super();
     }
 
-    //Lägg till ett nytt ord till testet.
+    //Lägg till en ny uppgift
     add(newTask){
         this._tasks.push(newTask);
-        console.log(this._tasks);
     }
+
+    /* //Töm alla svarsrutorna            det fungerar inte
+    clearAnswers(){
+        for (let task of this._tasks){
+            task.reset();
+        }
+    } */
 
     render(html) {
         return html`

@@ -12,11 +12,4 @@ class Panel extends Domer{
         this._appObject = appObject; //lagra en referens till App-objektet
         this._user = user;
     }
-    /* render(html) {
-        return html`
-        <div> 
-            <h3>${this._user}</h3>
-        </div>
-        `
-    } */
   }

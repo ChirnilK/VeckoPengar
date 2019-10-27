@@ -3,6 +3,10 @@
  */
 
 class StartPage extends Panel {
+
+    onLogginClick(){
+        this._appObject.setState(APP_STATE_LOGGIN);        
+    }
     
     onIncomeClick() {
         this._appObject.setState(APP_STATE_INCOME);
@@ -19,9 +23,10 @@ class StartPage extends Panel {
     render(html, route) {
         return html`
             <div>
+            <a href="#" click="onLogginClick" class="logoutLblPos">Logga ut</a>
               <font color="orange" size="5" face="Comic Sans MS">Välkommen!</font><br/>
               <br>
-              <font color="orange" size="5" face="Comic Sans MS"> ${this._appObject._currentUser}, Vad vill du göra idag?</font><br/>
+              <font color="orange" size="5" face="Comic Sans MS"> ${this._appObject._currentUser}, vad vill du göra idag?</font><br/>
               <br>
               <br>
               <button id=income click="onIncomeClick" type="button">Tjäna</button>

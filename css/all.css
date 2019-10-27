@@ -3,11 +3,13 @@
 }
 
 body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 10px;
   font-family: "Pontano Sans", sans-serif; 
   background-color: rgba(255, 255, 128, .5);
+  display: flex;
+  min-height: 80vh;
+}
+main {
+  flex: 1;
 }
 
 div {
@@ -16,12 +18,11 @@ div {
 }
 
 #ryu, #taki {
-  display: inline-block;
   background-color: #68e479;
   box-shadow: 4px 4px 3px gray;
   color:rgb(55, 25, 228);
   font-size: 30px;
-  border: none;
+  margin: 0px 15px;
   transition: background-color 1s ease;
   width:180px;
   height: 80px;
@@ -33,18 +34,20 @@ div {
   box-shadow: 4px 4px 3px gray;
   color: blue;
   font-size: 20px;
+  margin: 0px 5px;
   width:130px;
-  height: 50px;
+  height: 55px;
   border-radius: 20px;
 }
 
 #outcome{
   background-color:lightpink;
   box-shadow: 4px 4px 3px gray;
-  color: blue;;
+  color: blue;
   font-size: 20px;
+  margin: 0px 5px;
   width:130px;
-  height: 50px;
+  height: 55px;
   border-radius: 20px;
 } 
 
@@ -53,8 +56,9 @@ div {
   box-shadow: 4px 4px 3px gray;
   color: blue;;
   font-size: 20px;
+  margin: 0px 5px;
   width:130px;
-  height: 50px;
+  height: 55px;
   border-radius: 20px;
 }
 
@@ -85,7 +89,7 @@ image {
 
 footer{
   padding: 5px;
-
+  font-size: 14px;
 }
 
 ul li {
@@ -98,5 +102,13 @@ label {
 }
 ul {
   width: 250px;
-  margin: 0 auto;
+  margin: auto;
+}
+
+.logoutLblPos{
+
+  position:fixed;
+  right:40px;
+  top:30px;
+  color: blue;;
 }

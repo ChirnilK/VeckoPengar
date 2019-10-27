@@ -2,8 +2,12 @@
  * I den här panelen kan användare insätta pengar till sitt konto.
  */
 class IncomePanel extends Panel {
-    _status = "<p>Var snäll och skriva in i alla fält. <br> Du får trycka Månad knappen en gång om månad då bestämmar datorn din månadenspeng. Lycka till!</p>";
+    _status = "<p>Var snäll och fill i alla fälten. <br> Du får trycka Månads knappen en gång i månaden då bestämmer datorn din månadspeng. Lycka till!</p>";
     _points = 0;
+
+    onLogginClick(){
+        this._appObject.setState(APP_STATE_LOGGIN);        
+    }
 
     //När vi klickar på Add knappen...
     onAddTaskClick() {
@@ -12,7 +16,9 @@ class IncomePanel extends Panel {
         }
         else {
             this._taskList.add(new Task(this._date, this._task, this._pris));  
-            this._status = `<p style="color:green;">Informationen har sparat!</p>`
+            this._status = `<p style="color:green;">Informationen har sparats!</p>`
+            console.log(this._taskList);
+            
         }
         //Rensa inputboxarna
         this._task = '';
@@ -22,8 +28,9 @@ class IncomePanel extends Panel {
 
     //När vi klickar på Reset knappen...
     onClearTaskClick() {
-        this._appObject.setState(APP_STATE_INCOME);
-    }
+        //this._taskList.clearAnswers();
+        this._appObject.setState(APP_STATE_INCOME);            
+}
 
     //När vi klickar på Back knappen...
     onStartClick() {
@@ -35,14 +42,14 @@ class IncomePanel extends Panel {
         this._appObject.setState(APP_STATE_HISTORY);
     }
 
-    //När vi klickar på Månad knappen, då bestämmer datorn slumpvis månadenspeng mellan 30-100kr. 
+    //När vi klickar på Månads knappen, då bestämmer datorn slumpvis månadspeng mellan 30-100kr. 
     onMånadPengClick() {
         this._points = Math.floor(Math.random()*70+30);
         if (this._points>85){
-            this._status = `<p style="color:green;">Grattis!! Din Månadenspeng är ${this._points} kr!</p>`
+            this._status = `<p style="color:green;">Grattis!! Din Månadspeng är ${this._points} kr!</p>`
         }
         else {
-            this._status = `<p style="color:green;">Din Månadenspeng är ${this._points} kr!</p>`
+            this._status = `<p style="color:green;">Din Månadspeng är ${this._points} kr!</p>`
         }
     }
 
@@ -50,10 +57,13 @@ class IncomePanel extends Panel {
         return html`<div>
    
         <form>
+            <font color="orange" size="4" face="Comic Sans MS">Användare : ${this._appObject._currentUser}</font><br/>
+            <br>
+            <a href="#" click="onLogginClick" class="logoutLblPos">Logga ut</a>
             <ul>
                 <li class="date">
-                    <label for="date">Date :</label>
-                    <input id="date" name="date" type="text" bind="_date" style='width:250px'; placeholder="yyyy-mm-dd">
+                    <label for="date">Datum :</label>
+                    <input id="date" name="date" type="date" bind="_date" style='width:250px'; placeholder="yyyy-mm-dd">
                 </li>
                 <br>
                 <li class="task">
@@ -62,15 +72,15 @@ class IncomePanel extends Panel {
                     <option value="Dammsuga">Dammsuga</option>
                     <option value="Diskmaskin">Plocka ur diskmaskinen</option>
                     <option value="Sopor">Gå och kasta sopor</option>
-                    <option value="Tvätt">Sortera tvätten</option>
-                    <option value="IngenSpel">En 'Ingen skärm' dag</option>
+                    <option value="Sortera tvätten">Sortera tvätten</option>
+                    <option value="Ingen skärm dag">En 'Ingen skärm' dag</option>
                     <option value="Panta">Panta</option>
-                    <option value="MånadPeng">Månad Pengar</option>
+                    <option value="Månadspeng">Månadspeng</option>
                     </select>
                 </li>
             <br>
                 <li class="pris">
-                    <label for ="pris"> Priset :</label>
+                    <label for ="pris"> Belopp :</label>
                     <input id="pris" type ="text"  bind="_pris" style='width:250px' placeholder="kr">
                 </li>
             </ul>
@@ -79,7 +89,7 @@ class IncomePanel extends Panel {
         <br>
         <div class="box">
             <button click="onAddTaskClick" id="add" type="button">Add</button> 
-            <button click="onClearTaskClick" id="reset" type="button">Reset</button>
+            <button click="onClearTaskClick" id="clean" type="button">Reset</button>
             <button click="onStartClick" id="back" type="button">Back</button>
             <button click="onHistoryClick" id="send" type="button">Historik</button>
             <button click="onMånadPengClick" id="lön" type="button">Månad</button>

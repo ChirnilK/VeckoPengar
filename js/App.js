@@ -1,12 +1,13 @@
 
 class App extends Domer {
-  _currentUser='';
+
+  _currentUser = ''; 
   _appState = APP_STATE_LOGGIN;
   _userLogin = new UserLoggIn(this,this._user);
-
+  
   constructor() {
     super(); 
-    this.setState(APP_STATE_LOGGIN);  //Alltid börjar från UserLoggIn sida
+    this.setState(APP_STATE_LOGGIN);  //Alltid börjar med UserLoggIn sida
   }
 
 
@@ -15,11 +16,11 @@ class App extends Domer {
 
     switch (state) {
       case APP_STATE_LOGGIN:
-        this._currentPanel = this._userLogin;
+        this._currentPanel = this._userLogin;     //visar UserLoggIn sidan med _userLogin info  (kolla App.js:6)
         break;
 
       case APP_STATE_START:
-        this._currentPanel = new StartPage(this, this._user); //Här användaren kan välja vad man vill göra.
+        this._currentPanel = new StartPage(this, this._user); //Här man kan välja vad vill göra.
         break;
 
       case APP_STATE_INCOME:
@@ -33,7 +34,7 @@ class App extends Domer {
         break;
 
       case APP_STATE_HISTORY:
-        this._currentPanel = new HistoryPanel(this, this._taskList, this._user); //visa månadenshistorik
+        this._currentPanel = new HistoryPanel(this, this._taskList, this._user); //visa månadshistorik
         break;
 
     }
@@ -51,6 +52,7 @@ class App extends Domer {
         <br>
         <hr>
         ${this._currentPanel}
+        <footer>&copy; 2019 Chiharu</footer>
       </div>
       `
   }

@@ -4,17 +4,14 @@
 
 class UserLoggIn extends Panel {
 
-  /* constructor(appObject, taskList, user){
-    super(appObject, taskList, user); //anropa superklassens konstruktor
-    this._appObject = appObject; //lagra en referens till App-objektet
-  } */
-
+  //när Ryu knappen klicks då blir currectUser Ryu sen flyttar sidan till StartPage.
   onUserClick1() {
     this._user = 'Ryu';
     this._appObject._currentUser=this._user;
     this._appObject.setState(APP_STATE_START);
   }
 
+   //när Taki knappen klicks då blir currectUser Taki sen flyttar sidan till StartPage.
   onUserClick2() {
     this._user = 'Taki';
     this._appObject._currentUser=this._user;
@@ -26,12 +23,11 @@ class UserLoggIn extends Panel {
     return html`
           <div>
             <br>
-            <font color="orange" size="5" face="Comic Sans MS">Logga in med</font><br/>
+            <font color="orange" size="5" face="Comic Sans MS">Användare</font><br/>
             <br>
             
             <button id=ryu click="onUserClick1" type="button">Ryu</button>
             <button id=taki click="onUserClick2" type="button">Taki</button>
-            <br>
             <br>
             <br>
             <br>

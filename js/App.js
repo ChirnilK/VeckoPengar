@@ -43,7 +43,7 @@ class App extends Domer {
   }
 
 
-  render(html, route) {
+  render(html) {
     /*
      * this._currentPanel=Beroende på Appens "state" så kommer olika paneler att visas.
      */

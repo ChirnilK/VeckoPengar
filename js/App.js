@@ -48,7 +48,7 @@ class App extends Domer {
      */
     return html`
       <div>
-        <font color="orange" size="6" face="Comic Sans MS">e-Plånbok</font><br/>
+        <font color="orange" size="6" face="Comic Sans MS">e-Plånbokdd</font><br/>
         <br>
         <hr>
         ${this._currentPanel}

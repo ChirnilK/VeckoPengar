@@ -5,6 +5,8 @@ class IncomePanel extends Panel {
     _status = "<p>Var snäll och fill i alla fälten. <br> Du får trycka Månads knappen en gång i månaden då bestämmer datorn din månadspeng. Lycka till!</p>";
     _points = 0;
 
+
+    //När vi klickar på Logga ut knappen då flyttar det till LoggIn sida
     onLogginClick(){
         this._appObject.setState(APP_STATE_LOGGIN);        
     }
@@ -17,8 +19,7 @@ class IncomePanel extends Panel {
         else {
             this._taskList.add(new Task(this._date, this._task, this._pris));  
             this._status = `<p style="color:green;">Informationen har sparats!</p>`
-            console.log(this._taskList);
-            
+            console.log(this._taskList);            
         }
         //Rensa inputboxarna
         this._task = '';
@@ -28,9 +29,9 @@ class IncomePanel extends Panel {
 
     //När vi klickar på Reset knappen...
     onClearTaskClick() {
-        //this._taskList.clearAnswers();
-        this._appObject.setState(APP_STATE_INCOME);            
-}
+        this._taskList.clearAnswers();
+        this._status = `<p>Informationen har tagits bort</p>`         
+    }
 
     //När vi klickar på Back knappen...
     onStartClick() {
@@ -76,6 +77,7 @@ class IncomePanel extends Panel {
                     <option value="Ingen skärm dag">En 'Ingen skärm' dag</option>
                     <option value="Panta">Panta</option>
                     <option value="Månadspeng">Månadspeng</option>
+                    <option value="Present">Present</option>
                     </select>
                 </li>
             <br>

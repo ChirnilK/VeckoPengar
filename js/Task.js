@@ -14,6 +14,7 @@ class Task extends Domer {
     }
     
     //Vi bindar ihåp innerhållet av input-fältet och den som vi vill använda i programmet.
+    //readonly="readonly" för att inte kunna skriva om efter informationen sparat.
     render(html) {
         return html`
         <div> 

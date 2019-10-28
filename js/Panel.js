@@ -2,7 +2,7 @@ class Panel extends Domer{
 
     //En panel har referensen till ett appObject, en lista på task och en användare.
     _user = '';
-    _taskList= null;
+    _taskList= [];
     _appObject = null;
 
 

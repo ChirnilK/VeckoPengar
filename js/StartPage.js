@@ -4,23 +4,30 @@
 
 class StartPage extends Panel {
 
+    //När vi klickar på Logga ut knappen då flyttar det till LoggIn sida
     onLogginClick(){
         this._appObject.setState(APP_STATE_LOGGIN);        
     }
     
+    //När vi klickar på Tjäna knappen...
     onIncomeClick() {
         this._appObject.setState(APP_STATE_INCOME);
     }
 
+    //När vi klickar på Spendera knappen...
     onOutcomeClick() {
         this._appObject.setState(APP_STATE_OUTCOME);
     }
 
+    //När vi klickar på Historik knappen...
     onHistoryClick() {
         this._appObject.setState(APP_STATE_HISTORY);
     }
 
     render(html, route) {
+     /*
+      * this._appObject._currentUser är user's namn
+      */
         return html`
             <div>
             <a href="#" click="onLogginClick" class="logoutLblPos">Logga ut</a>

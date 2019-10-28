@@ -7,7 +7,7 @@ class UserLoggIn extends Panel {
   //när Ryu knappen klicks då blir currectUser Ryu sen flyttar sidan till StartPage.
   onUserClick1() {
     this._user = 'Ryu';
-    this._appObject._currentUser=this._user;
+    this._appObject._currentUser=this._user;  // För att kunna använda user's namn i andra sidor
     this._appObject.setState(APP_STATE_START);
   }
 

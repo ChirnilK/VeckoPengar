@@ -1,6 +1,6 @@
 /*
  * Den här klassen är en samling av uppgifterna.
- * Den exponerar add metod som andra klasser kan använda.
+ * Den exponerar add- och clearAnswers metod som andra klasser kan använda.
  */
 class TaskList extends Domer{
 
@@ -15,12 +15,11 @@ class TaskList extends Domer{
         this._tasks.push(newTask);
     }
 
-    /* //Töm alla svarsrutorna            det fungerar inte
+    //Töm alla svarsrutorna  
     clearAnswers(){
-        for (let task of this._tasks){
-            task.reset();
-        }
-    } */
+       this._tasks=[];
+    }
+
 
     render(html) {
         return html`

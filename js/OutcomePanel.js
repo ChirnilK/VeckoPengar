@@ -5,6 +5,8 @@ class OutcomePanel extends Panel {
 
     _status = "<p>Var snäll och fill i alla fälten</p>";
 
+
+    //När vi klickar på Logga ut knappen då flyttar det till LoggIn sida
     onLogginClick(){
         this._appObject.setState(APP_STATE_LOGGIN);        
     }
@@ -14,8 +16,12 @@ class OutcomePanel extends Panel {
         if (this._task == '' || this._date == '' || this._pris == '') {
             this._status = `<p style="color:red;">saknar information i en/flera fält.</p>`
         }
+        //priset måste vara negativ siffror eftersom här gör man "uttag".
+        else if(this._pris[0]!='-'){
+            this._status = `<p style="color:red;">Du glömde att skriva beloppet med minus tecken</p>` 
+        }
         else {
-            this._taskList.add(new Task(this._date, this._task, this._pris));  //Lägg till ny uppgift
+            this._taskList.add(new Task(this._date, this._task, this._pris)); 
             this._status = `<p style="color:green;">Informationen har sparats!</p>`
         }
         //Rensa inputboxarna
@@ -26,7 +32,8 @@ class OutcomePanel extends Panel {
 
     //När vi klickar på Reset knappen...
     onClearTaskClick() {
-        this._appObject.setState(APP_STATE_OUTCOME);
+        this._taskList.clearAnswers();
+        this._status = `<p>Informationen har tagits bort</p>`         
     }
 
     //När vi klickar på Back knappen...
@@ -57,13 +64,14 @@ class OutcomePanel extends Panel {
                     <select name="task" bind="_task" style='width:250px' placeholder="Välj en uppgift">
                     <option value="Spel">Spel</option>
                     <option value="Godis">Speciellt godis</option>
+                    <option value="Aktivitet">Speciell aktivitet</option>
                     <option value="Present">Present</option>
                     </select>
                     </li>
                 <br>
                     <li class="pris">
                         <label for ="pris"> Belopp :</label>
-                        <input id="pris" type ="text"  bind="_pris" style='width:250px' placeholder="Skriv med minus tecken(-kr) ">
+                        <input id="pris" type ="text"  bind="_pris" style='width:250px' placeholder="Skriv ett belopp med minus tecken(-kr) ">
                     </li>
                 </ul>
             </form>

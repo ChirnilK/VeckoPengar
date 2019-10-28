@@ -19,7 +19,7 @@ class UserLoggIn extends Panel {
   }
 
 
-  render(html, route) {
+  render(html) {
     return html`
           <div>
             <br>

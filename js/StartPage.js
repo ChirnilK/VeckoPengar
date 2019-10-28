@@ -24,7 +24,7 @@ class StartPage extends Panel {
         this._appObject.setState(APP_STATE_HISTORY);
     }
 
-    render(html, route) {
+    render(html) {
      /*
       * this._appObject._currentUser är user's namn
       */
